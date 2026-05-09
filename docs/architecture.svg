@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="IBM Plex Mono, monospace">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#66FCF1"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="540" fill="#0B0C10"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#C5C6C7" font-size="18" font-family="IBM Plex Serif" font-weight="600">
+    GitVisualizer · Phase 1 Architecture
+  </text>
+  <text x="450" y="62" text-anchor="middle" fill="#5C6270" font-size="10" letter-spacing="2">
+    CLIENT-ONLY · NO BACKEND · PUBLIC GITHUB API
+  </text>
+
+  <!-- Layer 1: Browser/User -->
+  <g>
+    <rect x="60" y="100" width="200" height="80" rx="4" fill="#14161C" stroke="#FBBF24" stroke-width="1.2"/>
+    <text x="160" y="128" text-anchor="middle" fill="#FBBF24" font-size="11" font-weight="600" letter-spacing="1.5">USER / BROWSER</text>
+    <text x="160" y="150" text-anchor="middle" fill="#C5C6C7" font-size="11">Types github username</text>
+    <text x="160" y="166" text-anchor="middle" fill="#8A8F99" font-size="10">?user=mizcausevic-dev</text>
+  </g>
+
+  <!-- Layer 2: SearchBar component -->
+  <g>
+    <rect x="350" y="100" width="200" height="80" rx="4" fill="#14161C" stroke="#66FCF1" stroke-width="1.2"/>
+    <text x="450" y="128" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="600" letter-spacing="1.5">REACT SPA</text>
+    <text x="450" y="150" text-anchor="middle" fill="#C5C6C7" font-size="11">SearchBar → App</text>
+    <text x="450" y="166" text-anchor="middle" fill="#8A8F99" font-size="10">URL sync · popstate listener</text>
+  </g>
+
+  <!-- Layer 3: github.ts service -->
+  <g>
+    <rect x="640" y="100" width="200" height="80" rx="4" fill="#14161C" stroke="#A78BFA" stroke-width="1.2"/>
+    <text x="740" y="128" text-anchor="middle" fill="#A78BFA" font-size="11" font-weight="600" letter-spacing="1.5">GITHUB API</text>
+    <text x="740" y="150" text-anchor="middle" fill="#C5C6C7" font-size="11">api.github.com</text>
+    <text x="740" y="166" text-anchor="middle" fill="#8A8F99" font-size="10">60 req/hr unauthenticated</text>
+  </g>
+
+  <!-- Arrows top row -->
+  <line x1="260" y1="140" x2="350" y2="140" stroke="#66FCF1" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="550" y1="140" x2="640" y2="140" stroke="#66FCF1" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Down arrow from SPA to compute layer -->
+  <line x1="450" y1="180" x2="450" y2="240" stroke="#66FCF1" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Layer 4: Components grid -->
+  <text x="60" y="270" fill="#5C6270" font-size="10" letter-spacing="2">VISUALIZATION LAYER · 14 components</text>
+
+  <g>
+    <rect x="60" y="285" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="150" y="307" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">Header + Stats</text>
+    <text x="150" y="325" text-anchor="middle" fill="#8A8F99" font-size="9">Profile + KPIs</text>
+  </g>
+
+  <g>
+    <rect x="260" y="285" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="350" y="307" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">ActivityChart + Topics</text>
+    <text x="350" y="325" text-anchor="middle" fill="#8A8F99" font-size="9">12-month timeline + cloud</text>
+  </g>
+
+  <g>
+    <rect x="460" y="285" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="550" y="307" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">Innovation + Maturity</text>
+    <text x="550" y="325" text-anchor="middle" fill="#8A8F99" font-size="9">Score cards</text>
+  </g>
+
+  <g>
+    <rect x="660" y="285" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="750" y="307" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">RepoGrid</text>
+    <text x="750" y="325" text-anchor="middle" fill="#8A8F99" font-size="9">Sortable repo list</text>
+  </g>
+
+  <g>
+    <rect x="60" y="355" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="150" y="377" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">FeaturedProjects</text>
+    <text x="150" y="395" text-anchor="middle" fill="#8A8F99" font-size="9">Top 3 by stars</text>
+  </g>
+
+  <g>
+    <rect x="260" y="355" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="350" y="377" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">HealthHeatmap</text>
+    <text x="350" y="395" text-anchor="middle" fill="#8A8F99" font-size="9">24-week activity grid</text>
+  </g>
+
+  <g>
+    <rect x="460" y="355" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="550" y="377" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">DiscoverySuite</text>
+    <text x="550" y="395" text-anchor="middle" fill="#8A8F99" font-size="9">AEO signals</text>
+  </g>
+
+  <g>
+    <rect x="660" y="355" width="180" height="56" rx="3" fill="#14161C" stroke="#2A2F38"/>
+    <text x="750" y="377" text-anchor="middle" fill="#66FCF1" font-size="11" font-weight="500">TechnicalSchema</text>
+    <text x="750" y="395" text-anchor="middle" fill="#8A8F99" font-size="9">JSON-LD for crawlers</text>
+  </g>
+
+  <!-- Bottom: stack -->
+  <line x1="40" y1="450" x2="860" y2="450" stroke="#2A2F38"/>
+  <text x="60" y="474" fill="#5C6270" font-size="10" letter-spacing="2">STACK</text>
+  <text x="60" y="496" fill="#C5C6C7" font-size="11">React 19 · Vite 6 · TypeScript 5.8 · Tailwind 4 · Motion · Recharts · Lucide</text>
+  <text x="60" y="514" fill="#C5C6C7" font-size="11">IBM Plex Sans/Mono/Serif · BERT theme (cyan #66FCF1, amber #FBBF24)</text>
+  <text x="450" y="496" fill="#FBBF24" font-size="11" text-anchor="middle">⚠ Phase 1 limit: 60 req/hr (unauthenticated)</text>
+  <text x="450" y="514" fill="#34D399" font-size="11" text-anchor="middle">→ Phase 2: backend proxy + KV cache → 5,000+ req/hr</text>
+</svg>

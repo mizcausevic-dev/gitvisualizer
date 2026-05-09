@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "IBM Plex Serif", Georgia, serif;
+
+  /* BERT theme — primary palette */
+  --color-bg: #0B0C10;
+  --color-surface: #14161C;
+  --color-surface-2: #1F2833;
+  --color-border-subtle: #2A2F38;
+
+  /* Text */
+  --color-text: #C5C6C7;
+  --color-text-dim: #8A8F99;
+  --color-text-mute: #5C6270;
+
+  /* Accents */
+  --color-accent: #66FCF1;          /* BERT cyan — primary */
+  --color-accent-2: #45A29E;        /* BERT teal */
+  --color-warm: #FBBF24;            /* Amber — secondary accent */
+  --color-good: #34D399;
+  --color-bad: #F87171;
+  --color-violet: #A78BFA;
+
+  /* Compatibility — keeps existing components working without per-class refactors */
+  --color-accent-muted: rgba(102, 252, 241, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text antialiased;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(102, 252, 241, 0.04) 0%, transparent 38%),
+      radial-gradient(circle at 88% 92%, rgba(69, 162, 158, 0.04) 0%, transparent 42%);
+    min-height: 100vh;
+  }
+
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+}
+
+@layer components {
+  .technical-card {
+    @apply bg-surface border border-border-subtle rounded-xl overflow-hidden shadow-sm transition-all duration-300;
+  }
+
+  .technical-card:hover {
+    border-color: rgba(102, 252, 241, 0.25);
+  }
+
+  .data-label {
+    @apply font-mono text-[10px] uppercase tracking-wider text-text-mute;
+  }
+
+  .stat-value {
+    @apply font-mono text-xl font-medium tracking-tight text-text;
+  }
+
+  /* Custom scrollbar for code blocks */
+  .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-border-subtle); border-radius: 2px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-accent-2); }
+}
