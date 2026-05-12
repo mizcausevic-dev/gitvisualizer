@@ -12,6 +12,7 @@ jobs:
   deploy:
     name: Build dist/ and FTP-sync to gv.kineticgain.com
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +36,31 @@ jobs:
           echo "OK: dist/ verified"
           ls -lah dist/
 
-      - name: FTP-Deploy dist/ to /gv/
+      - name: FTP-Deploy dist/ to /gv/ (first attempt)
+        id: deploy
+        timeout-minutes: 5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        continue-on-error: true
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          timeout: 60000
+          local-dir: ./dist/
+          server-dir: /gv/
+          dangerous-clean-slate: false
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+
+      - name: Retry FTP-Deploy if first attempt failed
+        if: steps.deploy.outcome == 'failure'
+        timeout-minutes: 5
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -43,10 +68,11 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           protocol: ftps
           port: 21
+          timeout: 90000
           local-dir: ./dist/
           server-dir: /gv/
           dangerous-clean-slate: false
-          log-level: standard
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
