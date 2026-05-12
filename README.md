@@ -155,3 +155,7 @@ For commercial licensing inquiries (closed-source forks, white-label deployments
 ---
 
 <sub>Built with React, Recharts, Motion, and entirely too much black coffee. ☕</sub>
+
+---
+
+**Connect:** [LinkedIn](https://www.linkedin.com/in/mirzacausevic/) · [Kinetic Gain](https://kineticgain.com) · [Medium](https://medium.com/@mizcausevic/) · [Skills](https://mizcausevic.com/skills/)
