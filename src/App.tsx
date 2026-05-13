@@ -182,14 +182,22 @@ export default function App() {
         <p className="font-mono text-[10px] uppercase tracking-widest text-text-mute">
           GitVisualizer v0.1 · AGPL-3.0
         </p>
-        <a
-          href="https://github.com/mizcausevic-dev/gitvisualizer"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[10px] uppercase tracking-widest text-text-mute hover:text-accent transition-colors"
-        >
-          mizcausevic-dev/gitvisualizer
-        </a>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href="/privacy.html"
+            className="font-mono text-[10px] uppercase tracking-widest text-text-mute hover:text-accent transition-colors"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="https://github.com/mizcausevic-dev/gitvisualizer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-widest text-text-mute hover:text-accent transition-colors"
+          >
+            mizcausevic-dev/gitvisualizer
+          </a>
+        </div>
       </footer>
     </div>
   );
