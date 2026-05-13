@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gitvisualizer-v1';
+const CACHE_NAME = 'gitvisualizer-v2';
 const APP_SHELL = [
   '/',
   '/manifest.json',

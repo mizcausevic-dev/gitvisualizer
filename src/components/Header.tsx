@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { GithubUser } from '../types';
-import { MapPin, Link as LinkIcon, Users, ShieldCheck, Briefcase, Globe } from 'lucide-react';
+import { MapPin, Link as LinkIcon, Users, ShieldCheck, Briefcase, Github } from 'lucide-react';
 
 interface HeaderProps {
   user: GithubUser;
@@ -32,15 +32,15 @@ export function Header({ user }: HeaderProps) {
           <div className="space-y-4">
             <div className="flex flex-wrap justify-center md:justify-start gap-3">
               <a 
-                href="https://kineticgain.com" 
+                href={user.html_url} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-zinc-300 uppercase tracking-widest flex items-center gap-2 hover:bg-white/10 transition-colors"
               >
-                <Globe className="w-3 h-3 text-accent" /> Kinetic Gain Partner
+                <Github className="w-3 h-3 text-accent" /> Public GitHub Profile
               </a>
               <span className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-[10px] font-bold text-accent uppercase tracking-widest flex items-center gap-2">
-                <Briefcase className="w-3 h-3" /> Technical SEO & AEO Architect
+                <Briefcase className="w-3 h-3" /> Repository Intelligence
               </span>
             </div>
 
@@ -49,13 +49,13 @@ export function Header({ user }: HeaderProps) {
                 {user.name || user.login}
               </h1>
               <p className="font-mono text-xs text-zinc-500 uppercase tracking-[0.4em] translate-x-1">
-                Engineering Director // Discoverability Expert
+                @{user.login}
               </p>
             </div>
           </div>
 
           <p className="text-zinc-400 max-w-2xl text-xl leading-relaxed font-light">
-            Engineering at <a href="https://kineticgain.com" className="text-zinc-100 hover:text-accent transition-colors underline decoration-zinc-800 underline-offset-4 font-medium">Kinetic Gain</a>.
+            {user.bio || 'Public GitHub profile intelligence generated from repository metadata.'}
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-8 pt-4">

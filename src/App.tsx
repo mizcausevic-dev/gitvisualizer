@@ -23,22 +23,21 @@ import { TechnicalSchema } from './components/TechnicalSchema';
 import { SearchBar } from './components/SearchBar';
 import { LoadingSkeleton } from './components/LoadingSkeleton';
 import { ErrorState } from './components/ErrorState';
-import { Search as SearchIcon, Github } from 'lucide-react';
+import { Search as SearchIcon, Github, ArrowRight } from 'lucide-react';
 
-const DEFAULT_USERNAME = 'mizcausevic-dev';
-
-function getInitialUsername(): string {
-  if (typeof window === 'undefined') return DEFAULT_USERNAME;
+function getInitialUsername(): string | null {
+  if (typeof window === 'undefined') return null;
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get('user') || params.get('u');
-  return (fromUrl || DEFAULT_USERNAME).trim().replace(/^@/, '');
+  const normalized = (fromUrl || '').trim().replace(/^@/, '');
+  return normalized || null;
 }
 
 export default function App() {
   const [username, setUsername] = useState(getInitialUsername);
   const [user, setUser] = useState<GithubUser | null>(null);
   const [repos, setRepos] = useState<GithubRepo[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(username));
   const [error, setError] = useState<Error | null>(null);
 
   const loadData = useCallback(async (targetUser: string) => {
@@ -60,12 +59,20 @@ export default function App() {
 
   // Initial load + reload when username changes
   useEffect(() => {
+    if (!username) {
+      setUser(null);
+      setRepos([]);
+      setError(null);
+      setLoading(false);
+      document.title = 'GitVisualizer';
+      return;
+    }
     loadData(username);
   }, [username, loadData]);
 
   // Sync URL when username changes
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !username) return;
     const params = new URLSearchParams(window.location.search);
     const current = params.get('user') || params.get('u');
     if (current !== username) {
@@ -84,7 +91,8 @@ export default function App() {
   }, []);
 
   const handleSearch = (next: string) => {
-    if (next && next !== username) setUsername(next);
+    const normalized = next.trim().replace(/^@/, '');
+    if (normalized && normalized !== username) setUsername(normalized);
   };
 
   const calculateStats = (repositories: GithubRepo[]): RepositoryStats => {
@@ -120,11 +128,39 @@ export default function App() {
             </p>
           </div>
         </div>
-        <SearchBar initialValue={username} onSearch={handleSearch} />
+        <SearchBar initialValue={username ?? ''} onSearch={handleSearch} />
       </div>
 
       <AnimatePresence mode="wait">
-        {loading ? (
+        {!username ? (
+          <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="min-h-[60vh] flex items-center justify-center">
+              <div className="technical-card max-w-2xl w-full p-8 md:p-12 text-center space-y-8">
+                <div className="mx-auto w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center">
+                  <SearchIcon className="w-6 h-6 text-accent" />
+                </div>
+                <div className="space-y-3">
+                  <p className="data-label">Developer profile intelligence</p>
+                  <h2 className="font-serif text-3xl md:text-5xl tracking-tight text-text">
+                    Search any public GitHub username
+                  </h2>
+                  <p className="text-text-dim text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                    Enter a GitHub handle to generate repository signals, language depth,
+                    activity patterns, topic clusters, and a mobile-friendly technical report.
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <SearchBar initialValue="" onSearch={handleSearch} />
+                </div>
+                <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest font-mono text-text-mute">
+                  <span>No login required</span>
+                  <ArrowRight className="w-3 h-3" />
+                  <span>Public GitHub data only</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : loading ? (
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <LoadingSkeleton />
           </motion.div>
