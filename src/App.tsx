@@ -190,6 +190,12 @@ export default function App() {
             Privacy Policy
           </a>
           <a
+            href="/delete-data.html"
+            className="font-mono text-[10px] uppercase tracking-widest text-text-mute hover:text-accent transition-colors"
+          >
+            Delete Data
+          </a>
+          <a
             href="https://github.com/mizcausevic-dev/gitvisualizer"
             target="_blank"
             rel="noopener noreferrer"

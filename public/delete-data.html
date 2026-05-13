@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B0C10" />
+    <title>Delete Data - GitVisualizer</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b0c10;
+        --panel: #14161c;
+        --text: #f8fafc;
+        --muted: #a1a1aa;
+        --accent: #66fcf1;
+        --border: #27272a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.65;
+      }
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 64px 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      h1,
+      h2 {
+        line-height: 1.15;
+      }
+      h1 {
+        font-size: clamp(2rem, 7vw, 4rem);
+        margin: 0 0 12px;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      p,
+      li {
+        color: var(--muted);
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 24px;
+        margin-top: 28px;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">GitVisualizer</p>
+      <h1>Delete Data</h1>
+      <p>Last updated: May 13, 2026</p>
+
+      <div class="panel">
+        <p>
+          GitVisualizer does not require an account and does not maintain a developer-owned server-side user database. The app uses public GitHub API data for the GitHub username entered by the user.
+        </p>
+      </div>
+
+      <h2>How To Request Deletion</h2>
+      <p>
+        To request deletion guidance or ask us to review any data associated with GitVisualizer, email <a href="mailto:miz@kineticgain.com">miz@kineticgain.com</a> with the subject line "GitVisualizer data deletion request".
+      </p>
+
+      <h2>What Can Be Deleted</h2>
+      <p>
+        Because GitVisualizer does not create user accounts or store searched GitHub usernames in a Kinetic Gain database, there is usually no server-side user record to delete. If future support records are created through email, we can delete those support records on request unless retention is required for security, legal, or abuse-prevention reasons.
+      </p>
+
+      <h2>Local App Data</h2>
+      <p>
+        Users can clear local GitVisualizer app or site data from Android app settings, Chrome site settings, or browser storage settings for gv.kineticgain.com. This clears local cache and service worker data stored on the device.
+      </p>
+
+      <h2>Data We Do Not Control</h2>
+      <p>
+        Public GitHub profile and repository data is provided by GitHub. To modify or delete GitHub account data, users must manage that data through GitHub.
+      </p>
+
+      <p>
+        <a href="/privacy.html">Privacy Policy</a> · <a href="/">Return to GitVisualizer</a>
+      </p>
+    </main>
+  </body>
+</html>
