@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.kineticgain.gitvisualizer",
+        "sha256_cert_fingerprints": ["99:EB:FA:01:BE:3C:5F:45:8D:3F:07:46:25:E5:9E:AA:9A:1B:93:86:E5:39:B1:FC:D7:95:B9:20:B8:64:CB:3D"]
+      }
+    }]
