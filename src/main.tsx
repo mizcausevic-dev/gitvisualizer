@@ -11,8 +11,11 @@ createRoot(document.getElementById('root')!).render(
 
 if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').catch(() => {
-      // The app still works without offline caching.
-    });
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then((registration) => registration.update())
+      .catch(() => {
+        // The app still works without offline caching.
+      });
   });
 }
